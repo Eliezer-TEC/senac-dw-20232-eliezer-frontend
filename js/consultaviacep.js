@@ -1,55 +1,52 @@
-async function buscarCEP(cep) {
+/////////   Versão 2: para chamar diretamente do HTML /////////
+//O valor do cep digitado está no <input> com id "txtCep"
+async function buscarCEP(){
   limpar();
-
-  var cep = document.getElementById("cep");
-  var cepInformado = cep.value;
+  //'document' é uma variável global que representa todo o HTML e seus elementos (a árvore DOM - Document Object Model)
+  var txtCep = document.getElementById('txtCep');
+  var cepInformado = txtCep.value;
 
   fetch(`https://viacep.com.br/ws/${cepInformado}/json/`)
-    .then((resultado) => resultado.json())
-    .then((json) => {
-      if (json.erro) {
-        mostrarTelaErro();
-      } else {
-        preencherCamposComJSON(json);
+  .then(resultado => resultado.json())
+  .then(json => {
+      if(json.erro){
+          mostrarTelaErro();
+      }else{
+          preencherCamposComJSON(json);
       }
-    })
-    .catch((erro) => mostrarTelaErro());
+  })
+  .catch(erro => {
+      mostrarTelaErro();
+  })
 }
 
-function preencherCamposComJSON(json) {
-  if (json.bairro) {
-    bairro.value = json.bairro;
-  } else {
-    bairro.disabled = false;
+//Preencher os dados do endereço obtido na página HTML
+function preencherCamposComJSON(json){
+  //essa condição funciona em javascript, é o equivalente a 
+  //if(json.bairro != undefined && json.bairro != '')
+  if(json.bairro){ 
+      //Obter o componente diretamente pelo id funciona (não sabia)
+      txtBairro.value = json.bairro;
+  }else{
+      txtBairro.disabled = false;
   }
 
-  if (json.logradouro) {
-    logradouro.value = json.logradouro;
-  } else {
-    logradouro.disabled = false;
-  }
-
-  cidade.value = json.localidade;
-  uf.value = json.uf;
-
-  console.log(json);
+  //Versão 2 (mais antiga): obter o componente navegando na árvore DOM
+  document.getElementById('txtUF').value = json.uf;
+  txtCidade.value = json.localidade;
 }
 
-function limpar() {
-  cep.valeu = "";
-  bairro.value = "";
-  logradouro.value = "";
-  cidade.value = "";
-  uf.value = "";
-  numero.value = "";
-
-  bairro.disabled = true;
-  logradouro.disabled = true;
-  cidade.disabled = true;
-  uf.disabled = true;
+function limpar(){
+  divDadosEndereco.style = 'background-color: aqua';
+  txtBairro.value = '';
+  txtCidade.value = '';
+  txtUF.value = '';
+  txtBairro.disabled = true;
 }
 
-function mostrarTelaErro() {
-    alert('CEP informado não existe')
-    limpar();
+function mostrarTelaErro(){
+  limpar();
+  divDadosEndereco.style = 'background-color: red';
+  alert('CEP informado não existe');
 }
+///////////////////////////////////////////////////////////////

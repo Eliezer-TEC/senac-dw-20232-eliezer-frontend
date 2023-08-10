@@ -1,19 +1,23 @@
 async function buscarCEP(){
     limpar();
     var cepInformado = document.getElementById('cep').value;
-    
-    fetch(`https://viacep.com.br/ws/${cepInformado}/json/`)
-    .then(resultado => resultado.json())
-    .then(json => {
-        if(json.erro){
+    cepInformado = cepInformado.replace('-', '');
+
+    var cepValido = validarCEP(cepInformado);
+    if(cepValido){
+        fetch(`https://viacep.com.br/ws/${cepInformado}/json/`)
+        .then(resultado => resultado.json())
+        .then(json => {
+            if(json.erro){
+                mostrarTelaErro();
+            }else{
+                preencherCamposComJSON(json);
+            }
+        })
+        .catch(erro => {
             mostrarTelaErro();
-        }else{
-            preencherCamposComJSON(json);
-        }
-    })
-    .catch(erro => {
-        mostrarTelaErro();
-    })
+        })
+    }
 }
 
 function preencherCamposComJSON(json){
@@ -54,5 +58,19 @@ function mostrarTelaErro(){
 }
 
 function validarCEP(cepFormatado){
-    var fieldSetCep = document.getElementById("fieldSetCep")
+    var fieldsetCep = document.getElementById('fieldset-consulta-cep');
+    var cepValido = false;
+    if(cepFormatado.length == 8){
+        fieldsetCep.style = 'background-color: purple';
+        cepValido = true;
+    }else{
+        fieldsetCep.style = 'background-color: orange';
+    }
+
+    return cepValido;
+}
+
+function salvarEndereco(){
+    //TODO chamar no backend
+    alert('Ainda não desenvolvido');
 }

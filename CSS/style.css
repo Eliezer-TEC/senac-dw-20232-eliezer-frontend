@@ -1,9 +1,97 @@
-.formulario{
-    border: 5px solid red;
-   
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
-.Endereço{
-    border: 5px solid blue;
-    font-style: italic;
+/* Estilos do cabeçalho */
+.cabecalho {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.cabecalho_titulo {
+    margin: 0;
+}
+
+/* Estilos do formulário */
+.principal {
+    padding-left: 40%;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+
+/* Estilos do rodapé */
+.rodape {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.formulario {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Estilos do botão */
+.formulario__fieldset__botao {
+    background-color: #333;
+    color: white;
+    border: none;
+    margin-top: 8px;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+
+
+/* Estilos dos campos de entrada */
+.formulario__fieldset__input__descricao {
+    width: 100%;
+    padding: 5px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos do menu lateral */
+.section__menu{
+    width: 10%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.section__menu__aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height:68vh;
+}
+
+
+
+.section__menu__aside__titulo a {
+    color: #333;
+    text-decoration: none;
+    padding: 50px;
+}
+
+/* Estilos do formulário de consulta de CEP */
+#fieldset-consulta-cep {
+    margin-bottom: 20px;
 }
