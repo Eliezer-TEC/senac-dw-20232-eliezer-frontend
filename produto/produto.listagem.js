@@ -39,10 +39,10 @@ function preencherTabela(jsonProdutos) {
         nome: document.getElementById("produto").value,
         fabricante: document.getElementById("fabricante").value,
         cnpjFabricante: document.getElementById("cnpj").value,
-        valorMinimo: document.getElementById("valor-min").value,
-        valorMaximo: document.getElementById("valorMax").value,
         pesoMinimo: document.getElementById("pesoMin").value,
         pesoMaximo: document.getElementById("pesoMax").value,
+        valorMinimo: document.getElementById("valor-min").value,
+        valorMaximo: document.getElementById("valor-max").value,
       }),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -59,15 +59,5 @@ function preencherTabela(jsonProdutos) {
     document.getElementById('meuConteudo').classList.toggle('show');
   }
   
-  window.onclick = (event) => {
-    if(!event.target.matches('.btn-drop')) {
-      var dropdowns = document.getElementsByClassName('dropdown-conteudo');
-      dropdowns.forEach(item => {
-        var openDropdown = dropdowns[item];
-        if(openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      });
-    }
-  }
 
+  buscarTodosProdutos();
