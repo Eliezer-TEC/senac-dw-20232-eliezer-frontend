@@ -1,0 +1,54 @@
+/* Estilo para o cabeçalho */
+.cabecalho {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cabecalho__titulo {
+    font-size: 24px;
+  }
+  
+  /* Estilo para os botões */
+  .formulario__fieldset__botao {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .formulario__fieldset__botao:hover {
+    background-color: #555;
+  }
+  
+  /* Estilo para a tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  thead {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Estilo para a seção principal */
+  .section__principal {
+    padding: 20px;
+  }
+  
+  /* Estilo para os filtros */
+  .filtros {
+    margin-bottom: 20px;
+  }
+  

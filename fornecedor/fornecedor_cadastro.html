@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cadastro de Fabricantes</title>
+
+    <!-- Importações de scripts JS, bibliotecas externas, arquivos CSS... -->
+    <script src="fornecedor_cadastro.js"></script>
+    <link rel="stylesheet" href="style_cadastro.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <h1 class="cabecalho_titulo">Cadastro de Fabricantes</h1>
+        <p class="cabecalho_texto">Informe os dados do fabricante</p>
+    </header>
+    <main class="principal">
+       
+
+        <section class="section__principal">
+            <form class="formulario" id="formulario">
+                <div>
+                    <fieldset class="formulario__fieldset">
+                        <legend>Fabricante:</legend>
+                        <div>
+                            <label class="formulario__texto" for="nome">Nome:</label>
+                            <input class="formulario__fieldset__input__descricao" type="text" id="nome" name="nome"
+                                minlength="3" required />
+                        </div>
+
+                        <div>
+                            <label class="formulario__texto" for="cnpj">Cnpj:</label>
+                            <input class="formulario__fieldset__input__descricao" type="text" id="cnpj" name="cnpj"
+                                required />
+                        </div>
+
+                        <div>
+                            <label class="formulario__texto" for="cep">Cep:</label>
+                            <input class="formulario__fieldset__input__descricao" type="text" id="cep" name="cep" onblur="buscarCEP()">
+                               
+                        </div>
+
+                        <div>
+                            <label class="formulario__texto" for="cidade">Cidade:</label>
+                            <input class="formulario__fieldset__input__descricao" type="text" id="cidade" name="cidade"
+                            disabled />
+                        </div>
+
+                        <div>
+                            <label class="formulario__texto" for="uf">Uf:</label>
+                            <input class="formulario__fieldset__input__descricao" type="text" id="uf" name="uf"
+                            disabled />
+                        </div>
+                        <div>
+                            <label class="formulario__texto"></label>
+                            <input class="formulario__fieldset__botao" id="botao" type="button" value="Cadastrar" onblur="cadastrarFabricante()" />
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="rodape">
+        <p class="rodape_texto"> Cadastro Fornecedor</p>
+    </footer>
+
+</body>
+
+</html>

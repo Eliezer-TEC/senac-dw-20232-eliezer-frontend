@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Listagem de Fabricantes</title>
+    <script src="fornecedor_listagem.js"></script>
+    <link rel="stylesheet" href="style_listagem.css">
+  </head>
+  <body>
+    <header class="cabecalho">
+      <h1 class="cabecalho__titulo">Consulta de Fabricantes</h1>
+    </header>
+    <main class="principal">
+      <div class="filtros">
+        <section class="section__principal">
+        <input class="formulario__fieldset__botao" id="botao" type="button" value="Buscar" onclick="buscarTodosFabricantes()" />
+        <input class="formulario__fieldset__botao" id="botao" type="button" value="Limpar" onclick="limpar()" />
+          <table>
+            <thead>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Cnpj</th>
+              <th>Cep</th>
+              <th>Cidade</th>
+              <th>Uf</th>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
