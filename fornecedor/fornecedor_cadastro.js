@@ -11,9 +11,7 @@ async function buscarCEP() {
                 preencherCamposComJSON(json);
             }
         })
-    // .catch(erro => {
-    //     mostrarTelaErro();
-    // })
+ 
 }
 
 //Preencher os dados do endereço obtido na página HTML
@@ -37,29 +35,38 @@ function limpar() {
 
 
 async function cadastrarFabricante() {
-    fetch("http://localhost:8080/api/fabricante/cadastrar", {
+    const nome = document.getElementById("nome").value;
+    const cnpj = document.getElementById("cnpj").value;
+    const cep = document.getElementById("cep").value;
+    const cidade = document.getElementById("cidade").value;
+    const uf = document.getElementById("uf").value;
+
+    // Verifique se todos os campos estão preenchidos
+    if (!nome || !cnpj || !cep || !cidade || !uf) {
+        alert("Preencha todos os campos");
+        return;
+    }
+
+    const response = await fetch("http://localhost:8080/api/fabricante/cadastrar", {
         method: "POST",
         body: JSON.stringify({
-            nome: document.getElementById("nome").value,
-            cnpj: document.getElementById("cnpj").value,
-            cep: document.getElementById("cep").value,
-            cidade: document.getElementById("cidade").value,
-            uf: document.getElementById("uf").value,
+            nome,
+            cnpj,
+            cep,
+            cidade,
+            uf,
         }),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
-    })
-      .then((resultado) => resultado.json())
-        .then((json) => {
-            console.log(json);
-        });
+    });
 
+    if (response.ok) {
+        // Se o cadastro foi bem-sucedido, exiba uma mensagem de sucesso
+        alert("Cadastrado com sucesso!");
         limpar();
-     
-}
-
-function mostrarTelaErro() {
-    limpar();
-    alert('Todos os campos devem estar preenchidos!');
+    } else {
+        // Se ocorreu um erro, exiba uma mensagem de erro
+        alert("Erro ao cadastrar. Verifique os campos e tente novamente.");
+    }
 }
