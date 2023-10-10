@@ -1,0 +1,52 @@
+<br>
+<div class="container">
+    <h1>Cadastro de Produto</h1>
+    <form>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome</label>
+                <input class="form-control" name="nome" [(ngModel)]="produto.nome">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nomeFabricante">Fabricante</label>
+                <select class="form-control" name="fabricanteDoProduto"
+                        [ngModelOptions]="{standalone: true}"
+                        aria-label="Selecione um fabricante"
+                        [compareWith]="compareById"
+                        [(ngModel)]="produto.fabricanteDoProduto">
+                    <option *ngFor="let fabricante of fabricantes"
+                            [ngValue]="fabricante">{{fabricante.nome}}</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="nome">Peso (Kg)</label>
+                <input class="form-control" type="number" name="peso"
+                       [(ngModel)]="produto.peso">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="valor">Valor</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">R$</div>
+                    </div>
+                    <input type="number" class="form-control" name="valor"
+                           placeholder="Valor de venda do produto"
+                           [(ngModel)]="produto.valor">
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-danger " (click)="salvar()">Salvar</button>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-dark" (click)="voltar()">Voltar</button>
+            </div>
+        </div>
+    </form>
+</div>

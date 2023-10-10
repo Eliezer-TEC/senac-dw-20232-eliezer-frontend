@@ -1,22 +1,15 @@
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 import { ProdutoListagemComponent } from './produto-listagem/produto-listagem.component';
 
 const routes: Routes = [
-  {path: 'lista', component: ProdutoListagemComponent}
+  {path: 'lista', component: ProdutoListagemComponent},
+  {path: 'detalhe', component: ProdutoDetalheComponent},
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProdutosRoutingModule implements OnInit {
-
-  constructor(){
-
-  }
-  ngOnInit(): void {
-
-  }
-}
+export class ProdutosRoutingModule { }

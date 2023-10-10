@@ -2,6 +2,8 @@
     "cSpell.words": [
         "Produto",
         "Produtos",
-        "seletor"
-    ]
+        "seletor",
+        "sweetalert"
+    ],
+    "liveServer.settings.port": 5501
 }
