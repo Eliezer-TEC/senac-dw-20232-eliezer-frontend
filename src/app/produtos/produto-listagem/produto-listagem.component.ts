@@ -1,20 +1,24 @@
+import { Router } from '@angular/router';
 import { ProdutoSeletor } from './../../shared/model/seletor/produto.seletor';
 import { ProdutoService } from './../../shared/service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/shared/model/produto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-produto-listagem',
   templateUrl: './produto-listagem.component.html',
   styleUrls: ['./produto-listagem.component.scss']
 })
+
+
 export class ProdutoListagemComponent implements OnInit {
 
-  //Lista de produtos que fará o binding com a tabela na view (html)
   public produtos: Array<Produto> = new Array();
   public seletor: ProdutoSeletor = new ProdutoSeletor();
 
-  constructor(private produtoService: ProdutoService){
+  constructor(private produtoService: ProdutoService,
+    private router: Router){
   }
 
   ngOnInit(): void {
@@ -49,7 +53,30 @@ export class ProdutoListagemComponent implements OnInit {
   }
 
   editar(id: number){
-    //TODO: Implementar a edição do produto
-    console.log('Editando o produto de id: ', id);
+    this.router.navigate(['/produtos/detalhe', id])
   }
+
+  excluir(id: number){
+
+    Swal.fire({
+      title: 'Você tem certeza disso?',
+      text: "Deseja excluir o produto #" + id + "?",
+      icon: 'warning',
+      showCancelButton: true,
+    }).then((retorno) => {
+      if(retorno.isConfirmed){
+         this.produtoService.excluir(id).subscribe(
+           sucesso => {
+             Swal.fire("Sucesso", "Produto excluído com sucesso!", 'success');
+             this.buscarProdutos(); //Atualiza a listagem
+           },
+           erro => {
+             Swal.fire("Erro", "Erro ao excluir o produto: " + erro, 'error');
+           }
+         );
+      }
+    }
+    );
+  }
+
 }
